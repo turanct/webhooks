@@ -26,6 +26,20 @@ final class HttpRequest
         $this->body = $body;
     }
 
+    public function addHeader($name, $value)
+    {
+        $headers = $this->headers;
+        $headers[(string) $name] = (string) $value;
+
+        return new static(
+            $this->method,
+            $this->url,
+            $this->params,
+            $headers,
+            $this->body
+        );
+    }
+
     public function getMethod()
     {
         return $this->method;
