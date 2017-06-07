@@ -25,7 +25,9 @@ class WebHooksGenericTest extends \PHPUnit_Framework_TestCase
             ->willReturn('bar');
 
         $webhooks = new WebHooksGeneric($client, $formatter, $signer);
-        $webhooks->send(new WebHook('foo', 'bar', array('baz', 'qux')));
+        $webhooks->send(
+            new WebHook(WebHookId::generate(), 'foo', 'bar', array('baz', 'qux'))
+        );
     }
 
     public function test_it_sends_an_http_request()
@@ -62,7 +64,12 @@ class WebHooksGenericTest extends \PHPUnit_Framework_TestCase
 
         $webhooks = new WebHooksGeneric($client, $formatter, $signer);
         $webhooks->send(
-            new WebHook('http://foo.com/webhooks', 'bar', array('baz', 'qux'))
+            new WebHook(
+                WebHookId::generate(),
+                'http://foo.com/webhooks',
+                'bar',
+                array('baz', 'qux')
+            )
         );
     }
 }
