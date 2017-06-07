@@ -5,7 +5,7 @@ namespace Turanct\WebHooks;
 interface HttpClient
 {
     /**
-     * @param Request $request An HTTP method like GET, POST,...
+     * @param HttpRequest $request An HTTP method like GET, POST,...
      *
      * @throws HttpClientException if the connection failed
      *
