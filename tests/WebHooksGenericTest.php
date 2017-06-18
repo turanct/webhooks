@@ -32,6 +32,8 @@ class WebHooksGenericTest extends \PHPUnit_Framework_TestCase
 
     public function test_it_sends_an_http_request()
     {
+        $webhookId = WebHookId::generate();
+
         $expectedRequest = new HttpRequest(
             'POST',
             'http://foo.com/webhooks',
@@ -39,6 +41,7 @@ class WebHooksGenericTest extends \PHPUnit_Framework_TestCase
             array(
                 'Content-Type' => 'application/json',
                 'X-Signature' => 'bar',
+                'X-Id' => (string) $webhookId,
             ),
             'foo'
         );
@@ -65,7 +68,7 @@ class WebHooksGenericTest extends \PHPUnit_Framework_TestCase
         $webhooks = new WebHooksGeneric($client, $formatter, $signer);
         $webhooks->send(
             new WebHook(
-                WebHookId::generate(),
+                $webhookId,
                 'http://foo.com/webhooks',
                 'bar',
                 array('baz', 'qux')

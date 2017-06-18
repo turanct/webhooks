@@ -31,6 +31,7 @@ final class WebHooksGeneric implements WebHooks
                 array(
                     'Content-Type' => $this->formatter->getContentType(),
                     'X-Signature' => $signature,
+                    'X-Id' => $webhook->getId(),
                 ),
                 $body
             );
