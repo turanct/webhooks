@@ -19,10 +19,6 @@ final class HttpClientFileGetContents implements HttpClient
                 'header' => $headers,
                 'content' => $request->getBody()
             ),
-            "ssl"=>array(
-                "verify_peer"=>false,
-                "verify_peer_name"=>false,
-            ),
         );
 
         $context  = stream_context_create($opts);
