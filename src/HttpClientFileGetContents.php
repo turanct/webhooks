@@ -11,9 +11,7 @@ final class HttpClientFileGetContents implements HttpClient
             $headers .= "{$key}: {$value}\r\n";
         }
 
-        var_dump($headers);
-
-        $opts = array(
+        $options = array(
             'http' => array(
                 'method'  => $request->getMethod(),
                 'header' => $headers,
@@ -21,7 +19,7 @@ final class HttpClientFileGetContents implements HttpClient
             ),
         );
 
-        $context  = stream_context_create($opts);
+        $context  = stream_context_create($options);
 
         $result = file_get_contents($request->getUrl(), false, $context);
         if ($result === false) {
