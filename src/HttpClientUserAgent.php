@@ -2,7 +2,7 @@
 
 namespace Turanct\WebHooks;
 
-final class HttpClientUserAgent
+final class HttpClientUserAgent implements HttpClient
 {
     private $client;
     private $userAgent;
