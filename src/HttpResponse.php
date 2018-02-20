@@ -1,8 +1,8 @@
 <?php
 
-namespace Turanct\WebHook;
+namespace Turanct\WebHooks;
 
-final class Response
+final class HttpResponse
 {
     private $statusCode;
     private $body;
